@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="public.js"></script>
+
+</head>
+<body>
+<div id="root">
+    <input v-model="inputValue">
+    <button @click="submit">提交</button>
+
+<ul>
+    <todo-item></todo-item>
+</ul>
+</div>
+<script>
+    Vue.component('todo-item',{
+        template:'<li>item</li>'
+    });
+    var app=new Vue({
+        el:"#root",
+        data:{
+            inputValue:'',
+            list:[]
+        },
+        methods:{
+            submit:function () {
+                this.list.push(this.inputValue)
+                this.inputValue=''
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
